@@ -1,0 +1,87 @@
+root { 
+    display: block;
+}
+
+.root {
+     -fx-background-image: url("come1.jpg");
+}
+
+.label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffb200;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+#welcome-text {
+   -fx-font-size: 50px;
+   -fx-font-family: "Arial Black";
+   -fx-fill: cyan;
+   -fx-effect:dropshadow( gaussian , rgba(0,0,0,100) , 0,0,0,1 );
+}
+
+#almuerzo {
+   -fx-fill: cyan;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
+}
+
+#nombre {
+   -fx-fill: cyan;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
+}
+
+#matricula {
+   -fx-fill: cyan;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
+}
+
+#total {
+   -fx-fill: cyan;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
+}
+
+#vuelto {
+   -fx-fill: cyan;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
+}
+
+#total1 {
+    -fx-fill: #00f500;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
+}
+
+#vuelto1 {
+   -fx-fill: #00f500;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
+}
+
+#cantidad {
+   -fx-fill: cyan;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
+}
+
+#imprimir {
+    -fx-fill: #ffff00;
+  -fx-font-weight: bold;
+  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
+}
+.button {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
