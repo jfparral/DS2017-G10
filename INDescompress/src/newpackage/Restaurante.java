@@ -90,4 +90,31 @@ public class Restaurante {
     public void agregarAsistente(Asistente a) {
         this.asistentes.add(a);
     }
+    
+    public LinkedList<Platillo> buscarPlatillo(String parametro, LinkedList<Platillo> lista)
+    {
+        LinkedList<Platillo> nueva=new LinkedList<Platillo>();
+        for(Platillo i:lista)
+        {
+            if(i.getNombre().contains(parametro) || i.getDescripcion().contains(parametro))
+            {
+                nueva.add(i);
+            }
+        }
+        return nueva;
+    }
+//    public static void main(String[] args) {
+//     Restaurante FIEC=new Restaurante("","","","");
+//     Platillo p1=new Platillo("Seco de pollo","plato ecuatoriano","Segundo","frio","almuerzo",FIEC);   
+//     Platillo p2=new Platillo("Seco de carne","plato ecuatoriano","Segundo","frio","almuerzo",FIEC);
+//     Platillo p3=new Platillo("Seco de chancho","plato ecuatoriano","Segundo","frio","almuerzo",FIEC);
+//     LinkedList<Platillo> plat=new LinkedList<Platillo>();
+//     LinkedList<Platillo> plat1=new LinkedList<Platillo>();
+//     plat.add(p1);
+//     plat.add(p2);
+//     plat.add(p3);
+//     plat1=FIEC.buscarPlatillo("Seco", plat);
+//     System.out.println(plat1);
+//    }
+   
 }

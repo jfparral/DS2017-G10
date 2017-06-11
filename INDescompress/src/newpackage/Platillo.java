@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package newpackage;
+
+import java.util.LinkedList;
 
 /**
  *
@@ -15,13 +12,15 @@ class Platillo {
     private String categoria;
     private String teperatura;
     private String tipo;
+    private Restaurante restaurante;
 
-    public Platillo(String nombre, String descripcion, String categoria, String teperatura, String tipo) {
+    public Platillo(String nombre, String descripcion, String categoria, String teperatura, String tipo, Restaurante restaurante) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
         this.teperatura = teperatura;
         this.tipo = tipo;
+        this.restaurante=restaurante;
     }
 
     public String getNombre() {
@@ -63,6 +62,49 @@ class Platillo {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
+    }
     
+    public LinkedList<String> listarCategoria(LinkedList<Platillo> lista)
+    {
+        LinkedList<String> list_catg=new LinkedList<String>();
+        for(int i=0;i<lista.size();i++)
+        {
+            if(!list_catg.contains(lista.get(i).getCategoria()))
+            {
+                list_catg.add(lista.get(i).getCategoria());
+            }
+        }
+        return list_catg;
+    }
+    public LinkedList<Platillo> listarPlatillo(String categoria,LinkedList<Platillo> lista)
+    {
+        LinkedList<Platillo> list_plat=new LinkedList<Platillo>();
+        for(int i=0;i<lista.size();i++)
+        {
+            if(categoria.equals(lista.get(i).getCategoria()))
+            {
+                list_plat.add(lista.get(i));
+            }
+        }
+        return list_plat;
+    }
     
+    public LinkedList<Object> DatosPlatillo(Platillo platillo)
+    {
+        LinkedList<Object> lista=new LinkedList<Object>();
+        lista.add(platillo.getNombre());
+        lista.add(platillo.getDescripcion());
+        lista.add(platillo.getTipo());
+        lista.add(platillo.getRestaurante());
+        lista.add(platillo.getCategoria());
+        return lista;
+    }        
 }
+
