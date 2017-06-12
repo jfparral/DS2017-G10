@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="INDescompress.jar" size="259354" download="eager" />
+    <jar href="INDescompress.jar" size="385400" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="INDescompress" >
     <param name="requiredFXVersion" value="8.0+"/>

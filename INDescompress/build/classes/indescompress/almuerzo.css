@@ -13,7 +13,7 @@ root {
    -fx-effect:dropshadow( gaussian , rgba(0,0,0,100) , 0,0,0,1 );
 }
 
-#almuerzo {
+#buscar {
    -fx-fill: cyan;
   -fx-font-weight: bold;
   -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
@@ -24,30 +24,6 @@ root {
    -fx-font-family: "Arial Black";
    -fx-fill: #210284;
    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
-}
-
-#menu3 {
-  -fx-fill: cyan;
-  -fx-font-weight: bold;
-  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
-}
-
-#menu4 {
-  -fx-fill: cyan;
-  -fx-font-weight: bold;
-  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
-}
-
-#menu1 {
-  -fx-fill: cyan;
-  -fx-font-weight: bold;
-  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
-}
-
-#menu2 {
-  -fx-fill: cyan;
-  -fx-font-weight: bold;
-  -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 0,0,0,1 );
 }
 
 .button {
