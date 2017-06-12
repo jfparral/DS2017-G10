@@ -28,7 +28,12 @@ public class main {
         
         usuarios = cargarUsuarios(usuariosString);
         actual = login(usuarios);
-        actual.imprimirMenu();
+        if (actual == null) {
+            System.out.println("No se encuentra ese usuario");
+        } else {
+            actual.imprimirMenu();
+        }
+        
     }
 
     private static LinkedList<Usuario> cargarUsuarios(LinkedList<String> lista) {
