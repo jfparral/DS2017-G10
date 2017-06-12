@@ -130,7 +130,7 @@ public class INDescompress extends Application {
         panelcliente.setVgap(10);
         panelcliente.setPadding(new Insets(25, 25, 25, 25));
         
-        Text tittlecliente = new Text("Menu de Usuario");
+        Text tittlecliente = new Text("Menu de Cliente");
         tittlecliente.setId("welcome-text");
         panelcliente.add(tittlecliente, 0, 0, 2, 1);
         
@@ -151,7 +151,7 @@ public class INDescompress extends Application {
             public void handle(ActionEvent e) {
                 
                         {
-                           window.setScene(scene3);
+                           window.setScene(scene4);
                         }
                     }
         });
@@ -181,6 +181,7 @@ public class INDescompress extends Application {
                 
                         {
                            window.setScene(scene3);
+                           //accion de buscar platillo
                         }
                     }
         });
@@ -211,6 +212,70 @@ public class INDescompress extends Application {
         
         scene2 = new Scene(panelcliente, 700, 400);
         
+        GridPane panelbuscar= new GridPane();
+        panelbuscar.setAlignment(Pos.CENTER);
+        panelbuscar.setHgap(10);
+        panelbuscar.setVgap(10);
+        panelbuscar.setPadding(new Insets(25, 25, 25, 25));
+        
+        Text tittlebuscar = new Text("Resultados de la Busqueda");
+        tittlebuscar.setId("welcome-text");
+        panelbuscar.add(tittlebuscar, 0, 0, 2, 1);
+        
+        Button btn4 = new Button("Regresar");
+        HBox hbBtn4 = new HBox(10);
+        hbBtn4.setAlignment(Pos.BOTTOM_RIGHT);
+        hbBtn4.getChildren().add(btn4);
+        panelbuscar.add(hbBtn4,4, 5);
+        
+        final Text actiontarget4 = new Text();
+        panelbuscar.add(actiontarget4, 3, 6);
+        actiontarget4.setId("actiontarget");
+        
+        btn4.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                
+                        {
+                           window.setScene(scene2);
+                        }
+                    }
+        });
+        
+        Text buscar1= new Text("Buscar platillo:");
+        buscar1.setId("buscar");
+        panelbuscar.add(buscar1, 2, 3);
+        
+        TextField campobuscar1 = new TextField();
+        panelbuscar.add(campobuscar1, 3, 3);
+        
+        Button btn5 = new Button("Ir");
+        HBox hbBtn5 = new HBox(10);
+        hbBtn5.setAlignment(Pos.BOTTOM_RIGHT);
+        hbBtn5.getChildren().add(btn5);
+        panelbuscar.add(hbBtn5,4, 3);        
+        
+        
+        final Text actiontarget5 = new Text();
+        panelbuscar.add(actiontarget5, 3, 6);
+        actiontarget5.setId("actiontarget");
+        
+        btn5.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                
+                        {
+                           //accion de buscar platillo
+                        }
+                    }
+        });
+        
+        
+        scene3=new Scene(panelbuscar,700,400);
+        
+        scene3.getStylesheets().add(INDescompress.class.getResource("buscar.css").toExternalForm());
         scene2.getStylesheets().add(INDescompress.class.getResource("almuerzo.css").toExternalForm());
         scene1.getStylesheets().add(INDescompress.class.getResource("Login.css").toExternalForm());
         window.setScene(scene1);
