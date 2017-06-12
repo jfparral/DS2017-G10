@@ -14,5 +14,18 @@ public class Administrador extends Usuario {
     public Administrador(String usuario, String contrasena) {
         super(usuario, contrasena);
     }
+
+    @Override
+    public int tipo() {
+        return 0;
+    }
+
+    @Override
+    public void imprimirMenu() {
+        System.out.println("1) Agregar restaurante desde XML\n"
+                + "2) Listar restaurante\n"
+                + "3) Agregar usuario\n"
+                + "4) Salir del sistema");
+    }
     
 }

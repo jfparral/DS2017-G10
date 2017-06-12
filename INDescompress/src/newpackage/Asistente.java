@@ -25,4 +25,17 @@ public class Asistente extends Usuario {
     public LinkedList<Platillo> mostrarPlatillos() {
         return this.restaurante.getPlatillos();
     }
+
+    @Override
+    public int tipo() {
+        return 1;
+    }
+
+    @Override
+    public void imprimirMenu() {
+        System.out.println("1) Agregar platillo\n"
+                + "2) Listar platillos\n"
+                + "3) Listar categorias de platillos\n"
+                + "4) Salir del sistema");
+    }
 }

@@ -9,7 +9,7 @@ package newpackage;
  *
  * @author hp
  */
-class Usuario {
+public abstract class Usuario {
     private String usuario;
     private String contrasena;
 
@@ -34,5 +34,7 @@ class Usuario {
         this.contrasena = contrasena;
     }
     
+    public abstract int tipo();
     
+    public abstract void imprimirMenu();
 }

@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
 
 /**
  *
@@ -30,12 +31,15 @@ public class Lector {
         this.archivo = archivo;
     }
 
-    public void cargarArchivo() throws FileNotFoundException, IOException {
+    public LinkedList<String> cargarArchivo() throws FileNotFoundException, IOException {
         BufferedReader br =new BufferedReader(new FileReader(this.archivo));
-        String line = br.readLine();
-        System.out.println(line);
+        LinkedList<String> l = new LinkedList<>();
+        while (br.ready()) {
+            String line = br.readLine();
+            l.add(line);
+        }
         br.close();
-        
+        return l;   
     }
     
 }
