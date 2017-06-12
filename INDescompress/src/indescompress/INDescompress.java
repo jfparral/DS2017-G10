@@ -163,6 +163,28 @@ public class INDescompress extends Application {
         TextField campobuscar = new TextField();
         panelcliente.add(campobuscar, 3, 3);
         
+        Button btn3 = new Button("Ir");
+        HBox hbBtn3 = new HBox(10);
+        hbBtn3.setAlignment(Pos.BOTTOM_RIGHT);
+        hbBtn3.getChildren().add(btn3);
+        panelcliente.add(hbBtn3,4, 3);        
+        
+        
+        final Text actiontarget3 = new Text();
+        panelcliente.add(actiontarget3, 3, 6);
+        actiontarget3.setId("actiontarget");
+        
+        btn3.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                
+                        {
+                           window.setScene(scene3);
+                        }
+                    }
+        });
+        
         Button btn2 = new Button("Cerrar Sesion");
         HBox hbBtn2 = new HBox(10);
         hbBtn2.setAlignment(Pos.BOTTOM_RIGHT);
