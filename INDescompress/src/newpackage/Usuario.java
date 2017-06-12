@@ -37,4 +37,12 @@ public abstract class Usuario {
     public abstract int tipo();
     
     public abstract void imprimirMenu();
+
+    public abstract void opcion1();
+
+    public abstract void opcion2();
+
+    public abstract void opcion3();
+
+    public abstract void opcion4();
 }

@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class main {
     
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         LinkedList<String> usuariosString = new LinkedList<>();
         LinkedList<Usuario> usuarios;
         Usuario actual;
@@ -32,6 +33,27 @@ public class main {
             System.out.println("No se encuentra ese usuario");
         } else {
             actual.imprimirMenu();
+        }
+        
+        int opcion = sc.nextInt();
+        switch (opcion) {
+            case 1:
+                actual.opcion1();
+                break;
+            case 2:
+                actual.opcion2();
+                break;
+            case 3:
+                actual.opcion3();
+                break;
+            case 4:
+                actual.opcion4();
+                break;
+            default:
+                System.out.println("No existe esa opcion\n"
+                        + "Ingrese una opcion valida: ");
+                opcion = sc.nextInt();
+                break;
         }
         
     }
