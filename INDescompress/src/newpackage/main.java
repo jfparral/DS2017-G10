@@ -5,6 +5,7 @@
  */
 package newpackage;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -16,18 +17,27 @@ public class main {
     
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        LinkedList<String> restaurantesString = new LinkedList<>();
+        LinkedList<Restaurante> restaurantes;
+        LinkedList<String> platillosString = new LinkedList<>();
+        LinkedList<Platillo> platillos;
         LinkedList<String> usuariosString = new LinkedList<>();
         LinkedList<Usuario> usuarios;
         Usuario actual;
         
         try {
-            Lector l = new Lector("Usuarios.csv");
-            usuariosString = l.cargarArchivo();
+            Lector lUsuarios = new Lector("Usuarios.csv");
+            usuariosString = lUsuarios.cargarArchivo();
+            Lector lPlatillos = new Lector("Platillos.csv");
+            platillosString = lPlatillos.cargarArchivo();
+            Lector lRestaurantes = new Lector("Restaurantes.csv");
+            restaurantesString = lRestaurantes.cargarArchivo();
         } catch (Exception ex) {
             System.out.println("No se encuentra el archivo");
         }
-        
+        restaurantes = cargarRestaurantes(restaurantesString);
         usuarios = cargarUsuarios(usuariosString);
+        platillos = cargarPlatillos(platillosString, restaurantes);
         actual = login(usuarios);
         if (actual == null) {
             System.out.println("No se encuentra ese usuario");
@@ -38,7 +48,12 @@ public class main {
         int opcion = sc.nextInt();
         switch (opcion) {
             case 1:
-                actual.opcion1();
+                
+                if (actual.tipo()==2) {
+                    listarCategorias(platillos);
+                } else {
+                    actual.opcion1();
+                }                
                 break;
             case 2:
                 actual.opcion2();
@@ -99,6 +114,48 @@ public class main {
         }
         return null;
     }
+
+    private static LinkedList<Platillo> cargarPlatillos(LinkedList<String> p, LinkedList<Restaurante> r) {
+        LinkedList<Platillo> platillos = new LinkedList<>();
+        for (int i = 0; i < p.size(); i+=6) {
+            Restaurante res = null;
+            for (Restaurante restaurante : r) {
+                if (restaurante.getNombre().equals(p.get(i+5))) {
+                    res = restaurante;
+                    break;
+                }
+            }
+            Platillo platillo = new Platillo(p.get(i), p.get(i+1), p.get(i+2), p.get(i+3), p.get(i+4), res);
+            platillos.add(platillo);
+        }
+        
+        return platillos;
+    }
+
+    private static LinkedList<Restaurante> cargarRestaurantes(LinkedList<String> r) {
+        LinkedList<Restaurante> restaurantes = new LinkedList<>();
+        for (int i = 0; i < r.size(); i+=6) {
+            Restaurante res = new Restaurante(r.get(i), r.get(i+1), r.get(i+2), r.get(i+3));
+            restaurantes.add(res);
+        }
+        
+        return restaurantes;
+    }
     
-    
+    private static void listarCategorias(LinkedList<Platillo> p) {
+        HashMap<String, LinkedList<Platillo>> cat = new HashMap();
+        for (Platillo pla : p) {
+            LinkedList<Platillo> l = new LinkedList<>();
+            if (!cat.containsKey(pla.getCategoria())) {
+                l.add(pla);
+                cat.put(pla.getCategoria(), l);
+            } else {
+                cat.get(pla.getCategoria()).add(pla);
+            }
+        }
+        
+        for (String categoria : cat.keySet()) {
+            System.out.println(categoria);
+        }
+    }
 }
