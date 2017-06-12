@@ -22,7 +22,8 @@ public class main {
     
     public static void main(String[] args) {
         LinkedList<String> usuariosString = new LinkedList<>();
-        LinkedList<Usuario> usuarios = new LinkedList<>();
+        LinkedList<Usuario> usuarios;
+        Usuario actual;
         
         try {
             Lector l = new Lector("Usuarios.csv");
@@ -32,7 +33,8 @@ public class main {
         }
         
         usuarios = cargarUsuarios(usuariosString);
-        login();
+        actual = login(usuarios);
+        actual.imprimirMenu();
     }
 
     private static LinkedList<Usuario> cargarUsuarios(LinkedList<String> lista) {
@@ -61,13 +63,20 @@ public class main {
         return usuarios;
     }
 
-    private static void login() {
+    private static Usuario login(LinkedList<Usuario> lista) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Usuario: ");
         String usuario = sc.nextLine();
         System.out.println("Contraseña: ");
         String contrasena = sc.nextLine();
-
+        
+        for (Usuario u : lista) {
+            if (u.getUsuario().equals(usuario)) {
+                //validar aqui la contraseña
+                return u;
+            }
+        }
+        return null;
     }
     
     
