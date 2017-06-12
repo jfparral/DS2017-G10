@@ -60,6 +60,27 @@ public class Cliente extends Usuario {
 
     @Override
     public void opcion2() {
+        this.cargarTodo();
+        LinkedList<Platillo> p = new LinkedList<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el nombre o parte del nombre: ");
+        String buscar = sc.nextLine();
+        for (int i = 0; i < this.platillos.size(); i++) {
+            if (platillos.get(i).getNombre().contains(buscar)) {
+                p.add(platillos.get(i));
+            }
+        }
+        
+        for (int i = 0; i < p.size(); i++) {
+            System.out.println((i+1)+") "+p.get(i).getNombre());
+        }
+        int op = sc.nextInt();
+        
+        if (p.size() > op-1) {
+            imprimirPlatillo(p.get(op-1));
+        } else {
+            System.out.println("Ese platillo no se encuentra disponible");
+        }    
 
     }
 
@@ -102,15 +123,19 @@ public class Cliente extends Usuario {
         int op = sc.nextInt();
         if (cat.get(convertirOpcion(categoria)).size() > op-1) {
             Platillo platillo = cat.get(convertirOpcion(categoria)).get(op-1);
-            System.out.println("Nombre: " + platillo.getNombre());
-            System.out.println("Descripcion: " + platillo.getDescripcion());
-            System.out.println("Categoria: " + platillo.getCategoria());
-            System.out.println("Temperatura: " + platillo.getTeperatura());
-            System.out.println("Tipo: " + platillo.getTipo());
-            System.out.println("Restaurante: " + platillo.getRestaurante().getNombre());
+            imprimirPlatillo(platillo);
         } else {
             System.out.println("Ya no se encuentra disponible ese platillo");
         }
         
+    }
+    
+    public static void imprimirPlatillo(Platillo p) {
+        System.out.println("Nombre: " + p.getNombre());
+        System.out.println("Descripcion: " + p.getDescripcion());
+        System.out.println("Categoria: " + p.getCategoria());
+        System.out.println("Temperatura: " + p.getTeperatura());
+        System.out.println("Tipo: " + p.getTipo());
+        System.out.println("Restaurante: " + p.getRestaurante().getNombre());
     }
 }
