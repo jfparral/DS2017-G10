@@ -5,6 +5,10 @@
  */
 package newpackage;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Scanner;
+
 /**
  *
  * @author hp
@@ -28,7 +32,24 @@ public class Cliente extends Usuario {
     }
 
     @Override
-    public void opcion1() {
+    public void opcion1() {        
+        System.out.println("1) Plato de mar\n"
+                + "2) Tipico\n"
+                + "3) Bocadillo\n"
+                + "4) Internacional");
+        Scanner sc = new Scanner(System.in);
+        int opcion = sc.nextInt();
+        
+        HashMap<String, LinkedList<Platillo>> cat = new HashMap();
+        for (Platillo pla : this.platillos) {
+            LinkedList<Platillo> l = new LinkedList<>();
+            if (!cat.containsKey(pla.getCategoria())) {
+                l.add(pla);
+                cat.put(pla.getCategoria(), l);
+            } else {
+                cat.get(pla.getCategoria()).add(pla);
+            }
+        }
         
     }
 
@@ -46,5 +67,5 @@ public class Cliente extends Usuario {
     public void opcion4() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

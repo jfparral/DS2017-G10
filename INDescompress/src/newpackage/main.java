@@ -48,12 +48,7 @@ public class main {
         int opcion = sc.nextInt();
         switch (opcion) {
             case 1:
-                
-                if (actual.tipo()==2) {
-                    listarCategorias(platillos);
-                } else {
-                    actual.opcion1();
-                }                
+                actual.opcion1();
                 break;
             case 2:
                 actual.opcion2();
@@ -132,7 +127,7 @@ public class main {
         return platillos;
     }
 
-    private static LinkedList<Restaurante> cargarRestaurantes(LinkedList<String> r) {
+    public static LinkedList<Restaurante> cargarRestaurantes(LinkedList<String> r) {
         LinkedList<Restaurante> restaurantes = new LinkedList<>();
         for (int i = 0; i < r.size(); i+=6) {
             Restaurante res = new Restaurante(r.get(i), r.get(i+1), r.get(i+2), r.get(i+3));
@@ -142,20 +137,5 @@ public class main {
         return restaurantes;
     }
     
-    private static void listarCategorias(LinkedList<Platillo> p) {
-        HashMap<String, LinkedList<Platillo>> cat = new HashMap();
-        for (Platillo pla : p) {
-            LinkedList<Platillo> l = new LinkedList<>();
-            if (!cat.containsKey(pla.getCategoria())) {
-                l.add(pla);
-                cat.put(pla.getCategoria(), l);
-            } else {
-                cat.get(pla.getCategoria()).add(pla);
-            }
-        }
-        
-        for (String categoria : cat.keySet()) {
-            System.out.println(categoria);
-        }
-    }
+    
 }
