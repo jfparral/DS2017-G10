@@ -86,12 +86,12 @@ public class Cliente extends Usuario {
 
     @Override
     public void opcion3() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Sesion cerrada");
     }
 
     @Override
     public void opcion4() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("No existe ese metodo para cliente");
     }
 
     public static String convertirOpcion(int opcion) {
@@ -130,12 +130,5 @@ public class Cliente extends Usuario {
         
     }
     
-    public static void imprimirPlatillo(Platillo p) {
-        System.out.println("Nombre: " + p.getNombre());
-        System.out.println("Descripcion: " + p.getDescripcion());
-        System.out.println("Categoria: " + p.getCategoria());
-        System.out.println("Temperatura: " + p.getTeperatura());
-        System.out.println("Tipo: " + p.getTipo());
-        System.out.println("Restaurante: " + p.getRestaurante().getNombre());
-    }
+    
 }

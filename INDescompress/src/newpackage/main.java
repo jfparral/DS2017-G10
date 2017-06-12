@@ -16,56 +16,57 @@ import java.util.Scanner;
 public class main {
     
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        LinkedList<String> restaurantesString = new LinkedList<>();
-        LinkedList<Restaurante> restaurantes;
-        LinkedList<String> platillosString = new LinkedList<>();
-        LinkedList<Platillo> platillos;
-        LinkedList<String> usuariosString = new LinkedList<>();
-        LinkedList<Usuario> usuarios;
-        Usuario actual;
-        
-        try {
-            Lector lUsuarios = new Lector("Usuarios.csv");
-            usuariosString = lUsuarios.cargarArchivo();
-            Lector lPlatillos = new Lector("Platillos.csv");
-            platillosString = lPlatillos.cargarArchivo();
-            Lector lRestaurantes = new Lector("Restaurantes.csv");
-            restaurantesString = lRestaurantes.cargarArchivo();
-        } catch (Exception ex) {
-            System.out.println("No se encuentra el archivo");
-        }
-        restaurantes = cargarRestaurantes(restaurantesString);
-        usuarios = cargarUsuarios(usuariosString);
-        platillos = cargarPlatillos(platillosString, restaurantes);
-        actual = login(usuarios);
-        if (actual == null) {
-            System.out.println("No se encuentra ese usuario");
-        } else {
-            actual.imprimirMenu();
-        }
-        
-        int opcion = sc.nextInt();
-        switch (opcion) {
-            case 1:
-                actual.opcion1();
-                break;
-            case 2:
-                actual.opcion2();
-                break;
-            case 3:
-                actual.opcion3();
-                break;
-            case 4:
-                actual.opcion4();
-                break;
-            default:
-                System.out.println("No existe esa opcion\n"
-                        + "Ingrese una opcion valida: ");
-                opcion = sc.nextInt();
-                break;
-        }
-        
+        while(true) {
+            Scanner sc = new Scanner(System.in);
+            LinkedList<String> restaurantesString = new LinkedList<>();
+            LinkedList<Restaurante> restaurantes;
+            LinkedList<String> platillosString = new LinkedList<>();
+            LinkedList<Platillo> platillos;
+            LinkedList<String> usuariosString = new LinkedList<>();
+            LinkedList<Usuario> usuarios;
+            Usuario actual;
+
+            try {
+                Lector lUsuarios = new Lector("Usuarios.csv");
+                usuariosString = lUsuarios.cargarArchivo();
+                Lector lPlatillos = new Lector("Platillos.csv");
+                platillosString = lPlatillos.cargarArchivo();
+                Lector lRestaurantes = new Lector("Restaurantes.csv");
+                restaurantesString = lRestaurantes.cargarArchivo();
+            } catch (Exception ex) {
+                System.out.println("No se encuentra el archivo");
+            }
+            restaurantes = cargarRestaurantes(restaurantesString);
+            usuarios = cargarUsuarios(usuariosString);
+            platillos = cargarPlatillos(platillosString, restaurantes);
+            actual = login(usuarios);
+            if (actual == null) {
+                System.out.println("No se encuentra ese usuario");
+            } else {
+                actual.imprimirMenu();
+            }
+
+            int opcion = sc.nextInt();
+            switch (opcion) {
+                case 1:
+                    actual.opcion1();
+                    break;
+                case 2:
+                    actual.opcion2();
+                    break;
+                case 3:
+                    actual.opcion3();
+                    break;
+                case 4:
+                    actual.opcion4();
+                    break;
+                default:
+                    System.out.println("No existe esa opcion\n"
+                            + "Ingrese una opcion valida: ");
+                    opcion = sc.nextInt();
+                    break;
+            }
+        }    
     }
 
     private static LinkedList<Usuario> cargarUsuarios(LinkedList<String> lista) {

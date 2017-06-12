@@ -100,6 +100,15 @@ public abstract class Usuario {
         return restaurantes;
     }
     
+    public static void imprimirPlatillo(Platillo p) {
+        System.out.println("Nombre: " + p.getNombre());
+        System.out.println("Descripcion: " + p.getDescripcion());
+        System.out.println("Categoria: " + p.getCategoria());
+        System.out.println("Temperatura: " + p.getTeperatura());
+        System.out.println("Tipo: " + p.getTipo());
+        System.out.println("Restaurante: " + p.getRestaurante().getNombre());
+    }
+    
     public abstract int tipo();
     
     public abstract void imprimirMenu();
