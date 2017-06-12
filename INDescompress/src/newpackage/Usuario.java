@@ -21,6 +21,10 @@ public abstract class Usuario {
         this.usuario = usuario;
         this.contrasena = contrasena;
         
+        
+    }
+    
+    public void cargarTodo() {
         LinkedList<String> restaurantesString = new LinkedList<>();
         LinkedList<String> platillosString = new LinkedList<>();
         
