@@ -6,7 +6,6 @@
 package newpackage;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -32,7 +31,7 @@ public class Lector {
     }
 
     public LinkedList<String> cargarArchivo() throws FileNotFoundException, IOException {
-        BufferedReader br =new BufferedReader(new FileReader(this.archivo));
+        BufferedReader br = new BufferedReader(new FileReader(this.archivo));
         LinkedList<String> l = new LinkedList<>();
         while (br.ready()) {
             String line = br.readLine();
