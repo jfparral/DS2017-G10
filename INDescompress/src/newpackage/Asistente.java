@@ -92,7 +92,43 @@ public class Asistente extends Usuario {
         }
         int opcion = sc.nextInt();
         imprimirPlatillo(restaurante.getPlatillos().get(opcion-1));
-        System.out.println("");
+        System.out.println("1) Modificar este platillo");
+        System.out.println("cualquier otra opcion para regresar");
+        if (sc.nextInt() == 1) {
+            sc.nextLine();
+            System.out.println("Ingrese el nombre del platillo: ");
+            String nombre = sc.nextLine();
+            System.out.println("Ingrese la descripcion del platillo: ");
+            String descripcion = sc.nextLine();
+            System.out.println("Ingrese la categoria del platillo(plato de mar, tipico, bocadillo, internacional): ");
+            String categoria = sc.nextLine();
+            System.out.println("Ingrese la temperatura del platillo(frio, caliente, al ambiente): ");
+            String temperatura = sc.nextLine();
+            System.out.println("Ingrese el tipo del platillo(aperitivo, plato fuerte, postre, desayuno): ");
+            String tipo = sc.nextLine();
+            try {
+                Lector l = new Lector("Platillos.csv");
+                LinkedList<String> lista = l.cargarArchivo();
+                for (int i = 0; i < lista.size(); i++) {
+                    if (lista.get(i).equals(restaurante.getPlatillos().get(opcion-1).getNombre())) {
+                        lista.set(i, nombre);
+                        lista.set(i+1, descripcion);
+                        lista.set(i+2, categoria);
+                        lista.set(i+3, temperatura);
+                        lista.set(i+4, tipo);
+                    }
+                }
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("Platillos.csv"), false), "UTF8"));
+                for (String s : lista) {
+                    bw.write(s+"\n");
+                }
+                bw.close();
+                System.out.println("Platillo modificado con exito");
+            } catch (Exception e) {
+                System.out.println("No se encuentra el archivo Platillos.csv" + e);
+            }
+        }
+        cargarTodo();
         return true;
     }
 
