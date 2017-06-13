@@ -32,7 +32,7 @@ public class Cliente extends Usuario {
     }
 
     @Override
-    public void opcion1() {     
+    public boolean opcion1() {     
         this.cargarTodo();
         System.out.println("Categorias:");
         System.out.println("1) Plato de mar\n"
@@ -55,11 +55,11 @@ public class Cliente extends Usuario {
         
         mostrarPlatillo(cat, opcion);
         
-        
+        return true;
     }
 
     @Override
-    public void opcion2() {
+    public boolean opcion2() {
         this.cargarTodo();
         LinkedList<Platillo> p = new LinkedList<>();
         Scanner sc = new Scanner(System.in);
@@ -81,17 +81,19 @@ public class Cliente extends Usuario {
         } else {
             System.out.println("Ese platillo no se encuentra disponible");
         }    
-
+        return true;
     }
 
     @Override
-    public void opcion3() {
+    public boolean opcion3() {        
         System.out.println("Sesion cerrada");
+        return false;
     }
 
     @Override
-    public void opcion4() {
+    public boolean opcion4() {
         System.out.println("No existe ese metodo para cliente");
+        return true;
     }
 
     public static String convertirOpcion(int opcion) {

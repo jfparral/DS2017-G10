@@ -29,23 +29,24 @@ public class Administrador extends Usuario {
     }
 
     @Override
-    public void opcion1() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean opcion1() {
+        return true;
     }
 
     @Override
-    public void opcion2() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean opcion2() {
+        return true;
     }
 
     @Override
-    public void opcion3() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean opcion3() {
+        return true;
     }
 
     @Override
-    public void opcion4() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean opcion4() {
+        System.exit(0);
+        return false;
     }
     
 }

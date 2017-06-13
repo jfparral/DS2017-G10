@@ -76,14 +76,16 @@ public abstract class Usuario {
     private static LinkedList<Platillo> cargarPlatillos(LinkedList<String> p, LinkedList<Restaurante> r) {
         LinkedList<Platillo> platillos = new LinkedList<>();
         for (int i = 0; i < p.size(); i+=6) {
-            Restaurante res = null;
-            for (Restaurante restaurante : r) {
-                if (restaurante.getNombre().equals(p.get(i+5))) {
-                    res = restaurante;
+            int res = 0;
+            for (int j = 0; j < r.size(); j++) {
+                if (r.get(j).getNombre().equals(p.get(i+5))) {
+                    res = j;
+                    
                     break;
                 }
             }
-            Platillo platillo = new Platillo(p.get(i), p.get(i+1), p.get(i+2), p.get(i+3), p.get(i+4), res);
+            Platillo platillo = new Platillo(p.get(i), p.get(i+1), p.get(i+2), p.get(i+3), p.get(i+4), r.get(res));
+            r.get(res).agregarPlatillo(platillo);
             platillos.add(platillo);
         }
         
@@ -94,9 +96,12 @@ public abstract class Usuario {
         LinkedList<Restaurante> restaurantes = new LinkedList<>();
         for (int i = 0; i < r.size(); i+=6) {
             Restaurante res = new Restaurante(r.get(i), r.get(i+1), r.get(i+2), r.get(i+3));
+            String[] asistentes = r.get(i+4).split(" ");
+            for (String nombre : asistentes) {
+                res.agregarAsistente(nombre);
+            }
             restaurantes.add(res);
         }
-        
         return restaurantes;
     }
     
@@ -113,11 +118,11 @@ public abstract class Usuario {
     
     public abstract void imprimirMenu();
 
-    public abstract void opcion1();
+    public abstract boolean opcion1();
 
-    public abstract void opcion2();
+    public abstract boolean opcion2();
 
-    public abstract void opcion3();
+    public abstract boolean opcion3();
 
-    public abstract void opcion4();
+    public abstract boolean opcion4();
 }

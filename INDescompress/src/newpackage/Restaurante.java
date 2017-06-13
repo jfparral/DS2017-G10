@@ -16,10 +16,10 @@ public class Restaurante {
     private String direccion;
     private String telefono;
     private String dueno;
-    private LinkedList<Usuario> asistentes;
+    private LinkedList<String> asistentes;
     private LinkedList<Platillo> platillos;
 
-    public Restaurante(String nombre, String direccion, String telefono, String dueno, LinkedList<Usuario> asistentes, LinkedList<Platillo> platillos) {
+    public Restaurante(String nombre, String direccion, String telefono, String dueno, LinkedList<String> asistentes, LinkedList<Platillo> platillos) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
@@ -33,6 +33,8 @@ public class Restaurante {
         this.direccion = direccion;
         this.telefono = telefono;
         this.dueno = dueno;
+        this.asistentes = new LinkedList<>();
+        this.platillos = new LinkedList<>();
     }
 
     public String getNombre() {
@@ -67,11 +69,11 @@ public class Restaurante {
         this.dueno = dueno;
     }
 
-    public LinkedList<Usuario> getAsistentes() {
+    public LinkedList<String> getAsistentes() {
         return asistentes;
     }
 
-    public void setAsistentes(LinkedList<Usuario> asistentes) {
+    public void setAsistentes(LinkedList<String> asistentes) {
         this.asistentes = asistentes;
     }
 
@@ -87,7 +89,7 @@ public class Restaurante {
         this.platillos.add(p);
     }
     
-    public void agregarAsistente(Asistente a) {
+    public void agregarAsistente(String a) {
         this.asistentes.add(a);
     }
     

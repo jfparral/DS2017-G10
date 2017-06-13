@@ -39,32 +39,36 @@ public class main {
             restaurantes = cargarRestaurantes(restaurantesString);
             usuarios = cargarUsuarios(usuariosString);
             platillos = cargarPlatillos(platillosString, restaurantes);
+            boolean bandera = true;
             actual = login(usuarios);
-            if (actual == null) {
-                System.out.println("No se encuentra ese usuario");
-            } else {
-                actual.imprimirMenu();
-            }
+            while (bandera) {
+                if (actual == null) {
+                    System.out.println("No se encuentra ese usuario");
+                } else {
+                    actual.imprimirMenu();
+                }
 
-            int opcion = sc.nextInt();
-            switch (opcion) {
-                case 1:
-                    actual.opcion1();
-                    break;
-                case 2:
-                    actual.opcion2();
-                    break;
-                case 3:
-                    actual.opcion3();
-                    break;
-                case 4:
-                    actual.opcion4();
-                    break;
-                default:
-                    System.out.println("No existe esa opcion\n"
-                            + "Ingrese una opcion valida: ");
-                    opcion = sc.nextInt();
-                    break;
+
+                int opcion = sc.nextInt();
+                switch (opcion) {
+                    case 1:
+                        bandera = actual.opcion1();
+                        break;
+                    case 2:
+                        bandera = actual.opcion2();
+                        break;
+                    case 3:
+                        bandera = actual.opcion3();
+                        break;
+                    case 4:
+                        bandera = actual.opcion4();
+                        break;
+                    default:
+                        System.out.println("No existe esa opcion\n"
+                                + "Ingrese una opcion valida: ");
+                        opcion = sc.nextInt();
+                        break;
+                }
             }
         }    
     }
@@ -81,7 +85,7 @@ public class main {
                     usuarios.add(u);
                     break;
                 case "Asistente":
-                    u = new Asistente(lista.get(i+1), lista.get(i+2));
+                    u = new Asistente(lista.get(i+1), lista.get(i+2));                    
                     usuarios.add(u);
                     break;
                 case "Cliente":
@@ -114,14 +118,16 @@ public class main {
     private static LinkedList<Platillo> cargarPlatillos(LinkedList<String> p, LinkedList<Restaurante> r) {
         LinkedList<Platillo> platillos = new LinkedList<>();
         for (int i = 0; i < p.size(); i+=6) {
-            Restaurante res = null;
-            for (Restaurante restaurante : r) {
-                if (restaurante.getNombre().equals(p.get(i+5))) {
-                    res = restaurante;
+            int res = 0;
+            for (int j = 0; j < r.size(); j++) {
+                if (r.get(j).getNombre().equals(p.get(i+5))) {
+                    res = j;
+                    
                     break;
                 }
             }
-            Platillo platillo = new Platillo(p.get(i), p.get(i+1), p.get(i+2), p.get(i+3), p.get(i+4), res);
+            Platillo platillo = new Platillo(p.get(i), p.get(i+1), p.get(i+2), p.get(i+3), p.get(i+4), r.get(res));
+            r.get(res).agregarPlatillo(platillo);
             platillos.add(platillo);
         }
         
@@ -132,6 +138,14 @@ public class main {
         LinkedList<Restaurante> restaurantes = new LinkedList<>();
         for (int i = 0; i < r.size(); i+=6) {
             Restaurante res = new Restaurante(r.get(i), r.get(i+1), r.get(i+2), r.get(i+3));
+            String[] asistentes = r.get(i+4).split(" ");
+            for (String nombre : asistentes) {
+                res.agregarAsistente(nombre);
+            }
+//            String[] platillos = r.get(i+5).split(" ");
+//            for (String plato : platillos) {
+//                res.agregarPlatillo(new Platillo(plato, plato, plato, plato, plato, res));
+//            }
             restaurantes.add(res);
         }
         
