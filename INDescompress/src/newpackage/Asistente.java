@@ -88,9 +88,11 @@ public class Asistente extends Usuario {
     public boolean opcion2() {
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i < restaurante.getPlatillos().size(); i++) {
-            System.out.println((i+1)+") "+restaurante.getPlatillos().get(i).getNombre());
-            int opcion = sc.nextInt();
+            System.out.println((i+1)+") "+restaurante.getPlatillos().get(i).getNombre());         
         }
+        int opcion = sc.nextInt();
+        imprimirPlatillo(restaurante.getPlatillos().get(opcion-1));
+        System.out.println("");
         return true;
     }
 
