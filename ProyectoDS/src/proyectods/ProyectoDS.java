@@ -24,7 +24,7 @@ public class ProyectoDS {
             LinkedList<Platillo> platillos;
             LinkedList<String> usuariosString = new LinkedList<>();
             LinkedList<Usuario> usuarios;
-            Usuario actual;
+            Usuario actual = null;
 
             try {
                 Lector lUsuarios = new Lector("Usuarios.csv");
@@ -34,13 +34,16 @@ public class ProyectoDS {
                 Lector lRestaurantes = new Lector("Restaurantes.csv");
                 restaurantesString = lRestaurantes.cargarArchivo();
             } catch (Exception ex) {
-                System.out.println("No se encuentra el archivo");
+                System.out.println("No secl encuentra el archivo");
             }
             restaurantes = cargarRestaurantes(restaurantesString);
             usuarios = cargarUsuarios(usuariosString);
             platillos = cargarPlatillos(platillosString, restaurantes);
             boolean bandera = true;
-            actual = login(usuarios);
+            while (actual == null) {
+                actual = login(usuarios);
+            }
+            
             while (bandera) {
                 if (actual == null) {
                     System.out.println("No se encuentra ese usuario");
@@ -49,7 +52,15 @@ public class ProyectoDS {
                 }
 
 
-                int opcion = sc.nextInt();
+                int opcion = 0;
+                while (opcion == 0) {
+                    try {
+                        opcion = sc.nextInt();
+                    } catch  (Exception e) {
+                        System.out.println("Error no debe ingresar letras");
+                        sc.nextLine();
+                    }
+                }
                 switch (opcion) {
                     case 1:
                         bandera = actual.opcion1();
@@ -65,8 +76,7 @@ public class ProyectoDS {
                         break;
                     default:
                         System.out.println("No existe esa opcion\n"
-                                + "Ingrese una opcion valida: ");
-                        opcion = sc.nextInt();
+                                + "Ingrese una opcion valida");
                         break;
                 }
             }
@@ -108,8 +118,11 @@ public class ProyectoDS {
         
         for (Usuario u : lista) {
             if (u.getUsuario().equals(usuario)) {
-                //validar aqui la contraseña
-                return u;
+                if (u.getContrasena().equals(contrasena)) {
+                    return u;
+                } else {
+                    System.out.println("Contraseña incorrecta");
+                }
             }
         }
         return null;

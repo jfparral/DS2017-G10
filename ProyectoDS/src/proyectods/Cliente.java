@@ -40,7 +40,16 @@ public class Cliente extends Usuario {
                 + "3) Bocadillo\n"
                 + "4) Internacional");
         Scanner sc = new Scanner(System.in);
-        int opcion = sc.nextInt();
+        int opcion = 0;
+        while (opcion == 0) {
+            try {
+                opcion = sc.nextInt();
+            } catch  (Exception e) {
+                System.out.println("Error no debe ingresar letras");
+                sc.nextLine();
+            }
+        }
+         
         
         HashMap<String, LinkedList<Platillo>> cat = new HashMap();
         for (Platillo pla : this.platillos) {
@@ -70,11 +79,22 @@ public class Cliente extends Usuario {
                 p.add(platillos.get(i));
             }
         }
+        if (p.size() == 0) {
+            return true;
+        }
         
         for (int i = 0; i < p.size(); i++) {
             System.out.println((i+1)+") "+p.get(i).getNombre());
         }
-        int op = sc.nextInt();
+        int op = 0;
+        while (op == 0) {
+            try {
+                op = sc.nextInt();
+            } catch  (Exception e) {
+                System.out.println("Error no debe ingresar letras");
+                sc.nextLine();
+            }
+        }
         
         if (p.size() > op-1) {
             imprimirPlatillo(p.get(op-1));

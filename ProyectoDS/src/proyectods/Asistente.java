@@ -91,12 +91,27 @@ public class Asistente extends Usuario {
         for (int i = 0; i < restaurante.getPlatillos().size(); i++) {
             System.out.println((i+1)+") "+restaurante.getPlatillos().get(i).getNombre());         
         }
-        int opcion = sc.nextInt();
+        int opcion = 0;
+        while (opcion == 0) {
+            try {
+                opcion = sc.nextInt();
+                sc.nextLine();
+                if (opcion > restaurante.getPlatillos().size() || opcion < 1) {
+                    System.out.println("No existe esa opcion");
+                    opcion = 0;
+                }
+                
+            } catch  (Exception e) {
+                System.out.println("Error no debe ingresar letras");
+                opcion = 0;
+                sc.nextLine();
+            }
+        }
         imprimirPlatillo(restaurante.getPlatillos().get(opcion-1));
         System.out.println("1) Modificar este platillo");
         System.out.println("cualquier otra opcion para regresar");
-        if (sc.nextInt() == 1) {
-            sc.nextLine();
+        if (sc.nextLine() == "1") {
+
             modificar(opcion);
         }
         cargarTodo();
@@ -112,7 +127,15 @@ public class Asistente extends Usuario {
                 + "3) Bocadillo\n"
                 + "4) Internacional");
         Scanner sc = new Scanner(System.in);
-        int opcion = sc.nextInt();
+        int opcion = 0;
+        while (opcion == 0) {
+            try {
+                opcion = sc.nextInt();
+            } catch  (Exception e) {
+                System.out.println("Error no debe ingresar letras");
+                sc.nextLine();
+            }
+        }
         
         HashMap<String, LinkedList<Platillo>> cat = new HashMap();
         for (Platillo pla : this.restaurante.getPlatillos()) {

@@ -144,7 +144,15 @@ public abstract class Usuario {
                     + " Restaurante: " +cat.get(convertirOpcion(categoria)).get(i).getRestaurante().getNombre());
         }
         
-        int op = sc.nextInt();
+        int op = 0;
+        while (op == 0) {
+            try {
+                op = sc.nextInt();
+            } catch  (Exception e) {
+                System.out.println("Error no debe ingresar letras");
+                sc.nextLine();
+            }
+        }
         if (cat.get(convertirOpcion(categoria)).size() > op-1) {
             Platillo platillo = cat.get(convertirOpcion(categoria)).get(op-1);
             imprimirPlatillo(platillo);
