@@ -45,6 +45,7 @@ public class Administrador extends Usuario {
 
     @Override
     public boolean opcion4() {
+        System.out.println("Archivos actualizados");
         System.exit(0);
         return false;
     }
