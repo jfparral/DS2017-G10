@@ -5,7 +5,10 @@
  */
 package proyectods;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Scanner;
+
 
 /**
  *
@@ -112,6 +115,43 @@ public abstract class Usuario {
         System.out.println("Temperatura: " + p.getTeperatura());
         System.out.println("Tipo: " + p.getTipo());
         System.out.println("Restaurante: " + p.getRestaurante().getNombre());
+    }
+    
+    public static String convertirOpcion(int opcion) {
+        switch (opcion) {
+            case 1:
+                return "plato de mar";
+            case 2:
+                return "tipico";
+            case 3:
+                return "bocadillo";
+            case 4:
+                return "internacional";
+            default:
+                System.out.println("No existe esa opcion");
+                return "";
+        }
+    }
+    
+    public static int mostrarPlatillo(HashMap<String, LinkedList<Platillo>> cat, int categoria) {
+        Scanner sc = new Scanner(System.in);
+        if (cat.get(convertirOpcion(categoria)) == null || cat.get(convertirOpcion(categoria)).isEmpty()) {
+            System.out.println("No existen platillos en esa categoria");
+            return 0;
+        }
+        for (int i = 0; i < cat.get(convertirOpcion(categoria)).size(); i++) {
+            System.out.println((i+1)+") "+cat.get(convertirOpcion(categoria)).get(i).getNombre()
+                    + " Restaurante: " +cat.get(convertirOpcion(categoria)).get(i).getRestaurante().getNombre());
+        }
+        
+        int op = sc.nextInt();
+        if (cat.get(convertirOpcion(categoria)).size() > op-1) {
+            Platillo platillo = cat.get(convertirOpcion(categoria)).get(op-1);
+            imprimirPlatillo(platillo);
+        } else {
+            System.out.println("Ya no se encuentra disponible ese platillo");
+        }
+        return op;
     }
     
     public abstract int tipo();

@@ -95,43 +95,4 @@ public class Cliente extends Usuario {
         System.out.println("No existe ese metodo para cliente");
         return true;
     }
-
-    public static String convertirOpcion(int opcion) {
-        switch (opcion) {
-            case 1:
-                return "plato de mar";
-            case 2:
-                return "tipicos";
-            case 3:
-                return "bocadillo";
-            case 4:
-                return "internacional";
-            default:
-                System.out.println("No existe esa opcion");
-                return "";
-        }
-    }
-    
-    public static void mostrarPlatillo(HashMap<String, LinkedList<Platillo>> cat, int categoria) {
-        Scanner sc = new Scanner(System.in);
-        if (cat.get(convertirOpcion(categoria)) == null || cat.get(convertirOpcion(categoria)).isEmpty()) {
-            System.out.println("No existen platillos en esa categoria");
-            return;
-        }
-        for (int i = 0; i < cat.get(convertirOpcion(categoria)).size(); i++) {
-            System.out.println((i+1)+") "+cat.get(convertirOpcion(categoria)).get(i).getNombre()
-                    + " Restaurante: " +cat.get(convertirOpcion(categoria)).get(i).getRestaurante().getNombre());
-        }
-        
-        int op = sc.nextInt();
-        if (cat.get(convertirOpcion(categoria)).size() > op-1) {
-            Platillo platillo = cat.get(convertirOpcion(categoria)).get(op-1);
-            imprimirPlatillo(platillo);
-        } else {
-            System.out.println("Ya no se encuentra disponible ese platillo");
-        }
-        
-    }
-    
-    
 }

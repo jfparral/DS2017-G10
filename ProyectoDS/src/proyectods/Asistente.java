@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -96,37 +97,7 @@ public class Asistente extends Usuario {
         System.out.println("cualquier otra opcion para regresar");
         if (sc.nextInt() == 1) {
             sc.nextLine();
-            System.out.println("Ingrese el nombre del platillo: ");
-            String nombre = sc.nextLine();
-            System.out.println("Ingrese la descripcion del platillo: ");
-            String descripcion = sc.nextLine();
-            System.out.println("Ingrese la categoria del platillo(plato de mar, tipico, bocadillo, internacional): ");
-            String categoria = sc.nextLine();
-            System.out.println("Ingrese la temperatura del platillo(frio, caliente, al ambiente): ");
-            String temperatura = sc.nextLine();
-            System.out.println("Ingrese el tipo del platillo(aperitivo, plato fuerte, postre, desayuno): ");
-            String tipo = sc.nextLine();
-            try {
-                Lector l = new Lector("Platillos.csv");
-                LinkedList<String> lista = l.cargarArchivo();
-                for (int i = 0; i < lista.size(); i++) {
-                    if (lista.get(i).equals(restaurante.getPlatillos().get(opcion-1).getNombre())) {
-                        lista.set(i, nombre);
-                        lista.set(i+1, descripcion);
-                        lista.set(i+2, categoria);
-                        lista.set(i+3, temperatura);
-                        lista.set(i+4, tipo);
-                    }
-                }
-                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("Platillos.csv"), false), "UTF8"));
-                for (String s : lista) {
-                    bw.write(s+"\n");
-                }
-                bw.close();
-                System.out.println("Platillo modificado con exito");
-            } catch (Exception e) {
-                System.out.println("No se encuentra el archivo Platillos.csv" + e);
-            }
+            modificar(opcion);
         }
         cargarTodo();
         return true;
@@ -134,6 +105,28 @@ public class Asistente extends Usuario {
 
     @Override
     public boolean opcion3() {
+        this.cargarTodo();
+        System.out.println("Categorias:");
+        System.out.println("1) Plato de mar\n"
+                + "2) Tipicos\n"
+                + "3) Bocadillo\n"
+                + "4) Internacional");
+        Scanner sc = new Scanner(System.in);
+        int opcion = sc.nextInt();
+        
+        HashMap<String, LinkedList<Platillo>> cat = new HashMap();
+        for (Platillo pla : this.restaurante.getPlatillos()) {
+            LinkedList<Platillo> l = new LinkedList<>();
+            if (!cat.containsKey(pla.getCategoria())) {
+                l.add(pla);
+                cat.put(pla.getCategoria(), l);
+            } else {
+                cat.get(pla.getCategoria()).add(pla);
+            }
+        }
+        
+        int opc = mostrarPlatillo(cat, opcion);
+        modificar(opc);
         
         return true;
     }
@@ -143,5 +136,40 @@ public class Asistente extends Usuario {
         System.out.println("Archivos actualizados");
         System.exit(0);
         return false;
+    }
+    
+    public void modificar(int opcion) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el nombre del platillo: ");
+        String nombre = sc.nextLine();
+        System.out.println("Ingrese la descripcion del platillo: ");
+        String descripcion = sc.nextLine();
+        System.out.println("Ingrese la categoria del platillo(plato de mar, tipico, bocadillo, internacional): ");
+        String categoria = sc.nextLine();
+        System.out.println("Ingrese la temperatura del platillo(frio, caliente, al ambiente): ");
+        String temperatura = sc.nextLine();
+        System.out.println("Ingrese el tipo del platillo(aperitivo, plato fuerte, postre, desayuno): ");
+        String tipo = sc.nextLine();
+        try {
+            Lector l = new Lector("Platillos.csv");
+            LinkedList<String> lista = l.cargarArchivo();
+            for (int i = 0; i < lista.size(); i++) {
+                if (lista.get(i).equals(restaurante.getPlatillos().get(opcion-1).getNombre())) {
+                    lista.set(i, nombre);
+                    lista.set(i+1, descripcion);
+                    lista.set(i+2, categoria);
+                    lista.set(i+3, temperatura);
+                    lista.set(i+4, tipo);
+                }
+            }
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("Platillos.csv"), false), "UTF8"));
+            for (String s : lista) {
+                bw.write(s+"\n");
+            }
+            bw.close();
+            System.out.println("Platillo modificado con exito");
+        } catch (Exception e) {
+            System.out.println("No se encuentra el archivo Platillos.csv" + e);
+        }
     }
 }
