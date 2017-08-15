@@ -22,6 +22,15 @@ public class Ejecutivo extends Platillo{
     public void DatosPlatillo() {
         System.out.println("Nombre: "+super.getNombre()+"\nDescripcion: "+super.getDescripcion()+
                 "\nTemperatura: "+super.getTeperatura()+"\nTipo: "+super.getTipo());
+        if(this.extras.isEmpty())
+            System.out.println("No tiene bebida o postre\n");
+        else
+        {
+            for(IExtras i:this.extras)
+            {
+                System.out.println(i.getTipoExtra()+" con el valor de $"+i.getPrecio()+"\n");
+            }
+        }
     }
 
     public void AgregarExtras(IExtras extra){

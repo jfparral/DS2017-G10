@@ -14,8 +14,8 @@ import java.util.LinkedList;
 public abstract class User {
     private String usuario;
     private String contrasena;
-    LinkedList<Restaurante> restaurantes;
-    LinkedList<Platillo> platillos;
+    private LinkedList<Restaurante> restaurantes;
+    private LinkedList<Platillo> platillos;
 
     public User(String usuario, String contrasena) {
         this.usuario = usuario;

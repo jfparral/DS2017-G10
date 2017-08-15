@@ -12,8 +12,9 @@ package segundoparcial;
 public abstract class IExtras {
     private double precio;
     private String tipoExtra;
-    public IExtras()
+    public IExtras(String nombre)
     {
+        this.tipoExtra=nombre;
     }
 
     public String getTipoExtra() {

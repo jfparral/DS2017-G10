@@ -13,7 +13,7 @@ public class Jugo extends IExtras{
     private String sabor;
     public Jugo(String jugo)
     {
-        this.sabor=jugo;
+        super(jugo);
     }
     
     @Override

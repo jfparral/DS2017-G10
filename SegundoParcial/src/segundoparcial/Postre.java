@@ -14,7 +14,7 @@ public class Postre extends IExtras{
     private String nombre;
     public Postre(String nombre)
     {
-        this.nombre=nombre;
+        super(nombre);
     }
     @Override
     public void Precio() {
