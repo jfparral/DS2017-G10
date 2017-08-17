@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 import segundoparcial.Extras.*;
-import segundoparcial.Menus.*;
 import segundoparcial.Personas.*;
 import segundoparcial.Platillos.*;
 
@@ -21,7 +20,7 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
 
     @Override
     public void AgregarMenu(User usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        usuario.getMenus().add(this);
     }
 
     @Override

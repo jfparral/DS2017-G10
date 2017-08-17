@@ -5,7 +5,6 @@
  */
 package segundoparcial.Personas;
 
-import segundoparcial.Personas.User;
 import java.util.*;
 import segundoparcial.Menus.MenuDecorator;
 

@@ -5,7 +5,6 @@
  */
 package segundoparcial.Menus;
 
-import segundoparcial.Menus.MenuDecorator;
 import segundoparcial.Personas.User;
 
 /**
@@ -16,12 +15,13 @@ public class Salir implements MenuDecorator{
 
     @Override
     public void AgregarMenu(User usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        usuario.getMenus().add(this);
     }
 
     @Override
     public void Implementar(User usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Se salio del sistema");
+        System.exit(0);
     }
 
     @Override

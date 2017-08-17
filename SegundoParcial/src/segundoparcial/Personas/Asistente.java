@@ -5,21 +5,32 @@
  */
 package segundoparcial.Personas;
 
-import segundoparcial.Personas.User;
 import java.util.*;
 import segundoparcial.Menus.*;
+import segundoparcial.*;
 
 /**
  *
  * @author usuario
  */
 public class Asistente extends User{
+    private Restaurante restaurante;
+    
     public Asistente(String usuario, String contrasena) {
         super(usuario, contrasena);
         this.menus=new LinkedList<MenuDecorator>();
+        this.menus.add(new AgregarPlatillo());
         this.menus.add(new ListarPlatillos());
         this.menus.add(new ListarPorCategoria());
-        this.menus.add(new PedidosdeAlmuerzo());
+        this.menus.add(new Salir());
+    }
+
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
     }
 
     

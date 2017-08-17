@@ -5,11 +5,8 @@
  */
 package segundoparcial.Menus;
 
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Scanner;
 import segundoparcial.Personas.*;
-import segundoparcial.Platillos.*;
 
 /**
  *
@@ -19,8 +16,7 @@ public class ListarPlatillos implements MenuDecorator{
 
     @Override
     public void AgregarMenu(User usuario) {
-        //usuario.getMenus().add(this);
-        //usuario.cargarTodo();
+        usuario.getMenus().add(this);
         
     }
 

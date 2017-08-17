@@ -19,7 +19,7 @@ public class ListarPorCategoria implements MenuDecorator{
 
     @Override
     public void AgregarMenu(User usuario) {
-        //usuario;
+        usuario.getMenus().add(this);
     }
 
     @Override

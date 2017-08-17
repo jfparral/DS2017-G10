@@ -5,8 +5,7 @@
  */
 package segundoparcial;
 
-import segundoparcial.Personas.Cliente;
-import segundoparcial.Personas.User;
+import segundoparcial.Personas.*;
 
 /**
  *
@@ -14,7 +13,10 @@ import segundoparcial.Personas.User;
  */
 public class AppSegundoParcial {
     public static void main(String[] args) {
+        //Asistente cliente=new Asistente("Juan","espol");
+        //cliente.setRestaurante(new Restaurante("Restaurante1", "ave 1 direccion al azar", "28864551", "Sixto Ramirez"));
         User cliente=new Cliente("Juan","espol");
+        
         cliente.imprimirMenu();
     }
 }

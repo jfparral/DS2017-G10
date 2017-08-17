@@ -5,9 +5,7 @@
  */
 package segundoparcial.Menus;
 
-import java.util.LinkedList;
 import segundoparcial.Personas.User;
-import segundoparcial.Platillos.*;
 
 /**
  *

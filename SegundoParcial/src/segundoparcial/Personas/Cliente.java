@@ -5,13 +5,9 @@
  */
 package segundoparcial.Personas;
 
-import segundoparcial.Personas.User;
 import java.util.LinkedList;
-import java.util.Scanner;
-import segundoparcial.CarnetInteligente;
 import segundoparcial.Menus.*;
-import segundoparcial.Menus.MenuDecorator;
-import segundoparcial.TarjetadeCredito;
+import segundoparcial.*;
 
 /**
  *
