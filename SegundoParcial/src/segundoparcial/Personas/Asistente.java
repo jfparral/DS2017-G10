@@ -18,7 +18,7 @@ public class Asistente extends User{
     
     public Asistente(String usuario, String contrasena) {
         super(usuario, contrasena);
-        this.menus=new LinkedList<MenuDecorator>();
+        this.menus=new LinkedList<>();
         this.menus.add(new AgregarPlatillo());
         this.menus.add(new ListarPlatillos());
         this.menus.add(new ListarPorCategoria());

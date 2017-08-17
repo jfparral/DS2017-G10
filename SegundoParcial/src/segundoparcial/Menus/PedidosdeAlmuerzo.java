@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 import segundoparcial.Extras.*;
+import segundoparcial.Pagos.*;
 import segundoparcial.Personas.*;
 import segundoparcial.Platillos.*;
 
@@ -43,8 +44,6 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
                 sc.nextLine();
             }
         }
-        
-        
         HashMap<String, LinkedList<Platillo>> cat = new HashMap();
         for (Platillo pla : usuario.getPlatillos()) {
             LinkedList<Platillo> l = new LinkedList<>();
@@ -55,11 +54,7 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
                 cat.get(pla.getCategoria()).add(pla);
             }
         }
-        
         int numPlatillo = usuario.mostrarPlatillo(cat, categorias.get(opcion-1));
-        
-        
-        
         Platillo platillo = cat.get(categorias.get(opcion-1)).get(numPlatillo-1);
         
         if (categorias.get(opcion-1).equals("estudiantil")) {
@@ -86,18 +81,14 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
             ejecutivo.setPrecio(ejecutivo.getPrecio()+jug.getPrecio());
         }
         System.out.println("Se realizo la compra el precio es " + platillo.getPrecio() +"\nMuchas gracias");
-        return;
-        
-        
+        while (pago((Cliente)usuario,platillo.getPrecio()) == 0);
     }
 
     public LinkedList<String> listarCategoria(LinkedList<Platillo> lista)
     {
         LinkedList<String> list_catg=new LinkedList<String>();
-        for(int i=0;i<lista.size();i++)
-        {
-            if(!list_catg.contains(lista.get(i).getCategoria()))
-            {
+        for(int i=0;i<lista.size();i++) {
+            if(!list_catg.contains(lista.get(i).getCategoria())) {
                 list_catg.add(lista.get(i).getCategoria());
             }
         }
@@ -107,6 +98,34 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
     @Override
     public String getNombre() {
         return "Pedido de almuerzo";
+    }
+
+    private int pago(Cliente usuario, double precio) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Seleccione el metodo de pago:");
+        System.out.println("1) Tarjeta de credito\n"
+                + "2) Carnet");
+        int opcion = sc.nextInt();
+        sc.nextLine();
+        Pago pago = new Carnet(usuario,0);
+        switch(opcion) {
+            case 1:
+                pago = usuario.getTarjeta();
+                break;
+            case 2:
+                pago = usuario.getCarnet();
+                break;
+        }
+        if(pago == null) {
+            System.out.println("No se pudo verificar");
+            return 0;
+        }
+        if (!pago.Validar()) {
+            System.out.println("No se pudo verificar");
+            return 0;
+        }        
+        pago.RealizarPago(precio);
+        return 1;
     }
     
 }

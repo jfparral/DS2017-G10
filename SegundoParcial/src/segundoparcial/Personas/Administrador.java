@@ -16,7 +16,7 @@ public class Administrador extends User{
 
     public Administrador(String usuario, String contrasena) {
         super(usuario, contrasena);
-        this.menus=new LinkedList<MenuDecorator>();
+        this.menus=new LinkedList<>();
     }
     
 

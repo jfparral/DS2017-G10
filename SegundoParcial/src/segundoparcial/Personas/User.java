@@ -76,7 +76,6 @@ public abstract class User {
             {
                 System.out.println((i+1)+") "+this.menus.get(i).getNombre());
             }
-        
             System.out.println("Escoja una opcion: \n");
             opc=sc.nextLine();
             this.menus.get(Integer.parseInt(opc)-1).Implementar(this);
@@ -108,7 +107,6 @@ public abstract class User {
                 platillos.add(platillo);
             }      
         }
-        
         return platillos;
     }
     
@@ -120,20 +118,14 @@ public abstract class User {
             for (String nombre : asistentes) {
                 res.agregarAsistente(nombre);
             }
-//            String[] platillos = r.get(i+5).split(" ");
-//            for (String plato : platillos) {
-//                res.agregarPlatillo(new Platillo(plato, plato, plato, plato, plato, res));
-//            }
             restaurantes.add(res);
         }
-        
         return restaurantes;
     }
     
     public void cargarTodo() {
         LinkedList<String> restaurantesString = new LinkedList<>();
         LinkedList<String> platillosString = new LinkedList<>();
-        
         try {
             Lector lPlatillos = new Lector("Platillos.csv");
             platillosString = lPlatillos.cargarArchivo();
@@ -142,7 +134,6 @@ public abstract class User {
         } catch (Exception ex) {
             System.out.println("No se encuentra el archivo");
         }
-        
         this.restaurantes = cargarRestaurantes(restaurantesString);
         this.platillos = cargarPlatillos(platillosString, restaurantes);
     }
@@ -157,7 +148,6 @@ public abstract class User {
             System.out.println((i+1)+") "+cat.get(categoria).get(i).getNombre()
                     + " Restaurante: " +cat.get(categoria).get(i).getRestaurante().getNombre());
         }
-        
         int op = 0;
         while (op == 0) {
             try {
@@ -168,13 +158,10 @@ public abstract class User {
             }
         }
         if (cat.get(categoria).size() > op-1) {
-            Platillo platillo = cat.get(categoria).get(op-1);
-            platillo.DatosPlatillo();
+            cat.get(categoria).get(op-1).DatosPlatillo();
         } else {
             System.out.println("Ya no se encuentra disponible ese platillo");
         }
         return op;
     }
-  
-    
 }

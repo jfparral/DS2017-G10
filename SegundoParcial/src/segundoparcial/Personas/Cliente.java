@@ -5,51 +5,50 @@
  */
 package segundoparcial.Personas;
 
+import segundoparcial.Pagos.*;
 import java.util.LinkedList;
 import segundoparcial.Menus.*;
-import segundoparcial.*;
 
 /**
  *
  * @author usuario
  */
-public class Cliente extends User{
+public class Cliente extends User{    
+    private CreditCard tarjeta;
+    private Carnet carnet;
     
-    private TarjetadeCredito tarjeta;
-    private CarnetInteligente carnet;
     public Cliente(String usuario, String contrasena) {
         super(usuario, contrasena);
-        this.menus=new LinkedList<MenuDecorator>();
+        this.menus=new LinkedList<>();
         this.menus.add(new ListarPlatillos());
         this.menus.add(new ListarPorCategoria());
         this.menus.add(new PedidosdeAlmuerzo());
     }
 
-    public TarjetadeCredito getTarjeta() {
+    public CreditCard getTarjeta() {
         return tarjeta;
     }
     
-    public void setTarjeta(TarjetadeCredito tarjeta) {
+    public void setTarjeta(CreditCard tarjeta) {
         this.tarjeta = tarjeta;
     }
 
-    public CarnetInteligente getCarnet() {
+    public Carnet getCarnet() {
         return carnet;
     }
 
-    public void setCarnet(CarnetInteligente carnet) {
+    public void setCarnet(Carnet carnet) {
         this.carnet = carnet;
     }
     
     public void AgregarCarnet()
     {
-        this.carnet=new CarnetInteligente(5000);
+        this.carnet=new Carnet(this,5000);
     }
     
     public void AgregarTarjeta()
     {
-        this.tarjeta=new TarjetadeCredito(5000);
+        this.tarjeta=new CreditCard(this,5000);
     }
 
-    
 }
