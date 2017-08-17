@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package segundoparcial;
+package segundoparcial.Menus;
 
 import segundoparcial.Personas.User;
 
@@ -11,20 +11,22 @@ import segundoparcial.Personas.User;
  *
  * @author usuario
  */
-public class Carnet extends Pago{
-
-    public Carnet(User estudiante, double saldo) {
-        super(estudiante, saldo);
-    }
+public class MostrarPlatillo implements MenuDecorator{
 
     @Override
-    public boolean Validar() {
+    public void AgregarMenu(User usuario) {
+        String menu = "";
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void RealizarPago() {
+    public void Implementar(User usuario) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getNombre() {
+        return "Mostrar Platillo";
     }
     
 }

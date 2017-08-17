@@ -5,6 +5,7 @@
  */
 package segundoparcial;
 
+import segundoparcial.Platillos.Platillo;
 import java.util.LinkedList;
 
 /**
@@ -14,15 +15,24 @@ import java.util.LinkedList;
 public class Restaurante {
     private String nombre,direccion,telefono,dueno;
     private LinkedList<Platillo>platillos;
-    private LinkedList<Asistente>asistentes;
+    private LinkedList<String>asistentes;
 
-    public Restaurante(String nombre, String direccion, String telefono, String dueno, LinkedList<Platillo> platillos, LinkedList<Asistente> asistentes) {
+    public Restaurante(String nombre, String direccion, String telefono, String dueno, LinkedList<Platillo> platillos, LinkedList<String> asistentes) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.dueno = dueno;
         this.platillos = platillos;
         this.asistentes = asistentes;
+    }
+    
+    public Restaurante(String nombre, String direccion, String telefono, String dueno) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.dueno = dueno;
+        this.asistentes = new LinkedList<>();
+        this.platillos = new LinkedList<>();
     }
 
     public String getNombre() {
@@ -65,13 +75,19 @@ public class Restaurante {
         this.platillos = platillos;
     }
 
-    public LinkedList<Asistente> getAsistentes() {
+    public LinkedList<String> getAsistentes() {
         return asistentes;
     }
 
-    public void setAsistentes(LinkedList<Asistente> asistentes) {
+    public void setAsistentes(LinkedList<String> asistentes) {
         this.asistentes = asistentes;
     }
     
+    public void agregarPlatillo(Platillo p) {
+        this.platillos.add(p);
+    }
     
+    public void agregarAsistente(String a) {
+        this.asistentes.add(a);
+    }
 }

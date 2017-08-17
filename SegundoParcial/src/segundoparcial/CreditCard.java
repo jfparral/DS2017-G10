@@ -5,6 +5,8 @@
  */
 package segundoparcial;
 
+import segundoparcial.Personas.User;
+
 /**
  *
  * @author usuario

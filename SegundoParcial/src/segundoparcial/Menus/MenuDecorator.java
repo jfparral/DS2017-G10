@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package segundoparcial;
+package segundoparcial.Menus;
 
-import segundoparcial.Personas.Cliente;
+import java.util.LinkedList;
 import segundoparcial.Personas.User;
+import segundoparcial.Platillos.*;
 
 /**
  *
  * @author usuario
  */
-public class AppSegundoParcial {
-    public static void main(String[] args) {
-        User cliente=new Cliente("Juan","espol");
-        cliente.imprimirMenu();
-    }
+public interface MenuDecorator {
+    public void AgregarMenu(User usuario);
+    public void Implementar(User usuario);
+    public String getNombre();
 }
