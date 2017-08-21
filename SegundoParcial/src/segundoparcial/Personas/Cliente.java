@@ -23,6 +23,7 @@ public class Cliente extends User{
         this.menus.add(new ListarPlatillos());
         this.menus.add(new ListarPorCategoria());
         this.menus.add(new PedidosdeAlmuerzo());
+        this.menus.add(new Salir());
     }
 
     public CreditCard getTarjeta() {

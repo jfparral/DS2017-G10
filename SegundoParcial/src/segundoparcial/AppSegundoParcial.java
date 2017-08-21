@@ -5,7 +5,13 @@
  */
 package segundoparcial;
 
+import java.util.LinkedList;
+import java.util.Scanner;
 import segundoparcial.Personas.*;
+import segundoparcial.Lector;
+import segundoparcial.Restaurante;
+import segundoparcial.CargarSistema.*;
+import segundoparcial.Platillos.*;
 
 /**
  *
@@ -13,11 +19,40 @@ import segundoparcial.Personas.*;
  */
 public class AppSegundoParcial {
     public static void main(String[] args) {
-        //Asistente cliente=new Asistente("Juan","espol");
-        //cliente.setRestaurante(new Restaurante("Restaurante1", "ave 1 direccion al azar", "28864551", "Sixto Ramirez"));
-        Cliente cliente=new Cliente("Juan","espol");
-        cliente.AgregarTarjeta();
-        cliente.AgregarCarnet();
-        cliente.imprimirMenu();
+        while(true) {
+            Scanner sc = new Scanner(System.in);
+            LinkedList<String> restaurantesString = new LinkedList<>();
+            LinkedList<Restaurante> restaurantes;
+            LinkedList<String> platillosString = new LinkedList<>();
+            LinkedList<Platillo> platillosejecu=new LinkedList<>();
+            LinkedList<Platillo> platillosestud= new LinkedList<>();
+            LinkedList<String> usuariosString = new LinkedList<>();
+            LinkedList<User> usuarios;
+            User actual = null;
+
+            try {
+                usuariosString=new Lector("Usuarios.csv").cargarArchivo();
+                platillosString = new Lector("Platillos.csv").cargarArchivo();
+                restaurantesString = new Lector("Restaurantes.csv").cargarArchivo();
+            } catch (Exception ex) {
+                System.out.println("No se encuentra el archivo");
+            }
+            restaurantes = new Loader().cargarRestaurantes(restaurantesString);
+            usuarios = new Loader().cargarUsuarios(usuariosString);
+            platillosejecu = new Loader().cargarPlatillosEjecutivos(platillosString, restaurantes);
+            platillosestud= new Loader().cargarPlatillosEjecutivos(platillosString, restaurantes);
+            boolean bandera = true;
+            while (actual == null) {
+                actual = new Loader().Login(usuarios);
+            }
+            
+            while (bandera) {
+                if (actual == null) {
+                    System.out.println("No se encuentra ese usuario");
+                } else {
+                    actual.imprimirMenu();
+                }
+            }
+        }    
     }
 }

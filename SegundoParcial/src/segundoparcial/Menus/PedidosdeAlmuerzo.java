@@ -26,8 +26,7 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
 
     @Override
     public void Implementar(User usuario) {
-        System.out.println("Ha elegido pedir un almuerzo" + "\n"
-                + "Elija la categoria");
+        System.out.println("Ha elegido pedir un almuerzo\n");
         usuario.cargarTodo();
         LinkedList<String> categorias = listarCategoria(usuario.getPlatillos());
         System.out.println("Escoja una categoria");

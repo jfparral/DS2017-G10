@@ -23,10 +23,7 @@ public class ListarPlatillos implements MenuDecorator{
     @Override
     public void Implementar(User usuario) {
         usuario.cargarTodo();
-        
-        
-        
-
+      
         for (int i = 0; i < usuario.getPlatillos().size(); i++) {
             System.out.println(i+1 + ") " + usuario.getPlatillos().get(i).getNombre());
         }
@@ -35,6 +32,7 @@ public class ListarPlatillos implements MenuDecorator{
         int opcion = 0;
         while (opcion == 0) {
             try {
+                System.out.print("Escoja una opción: ");
                 opcion = sc.nextInt();
             } catch  (Exception e) {
                 System.out.println("Error no debe ingresar letras");

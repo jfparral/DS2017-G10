@@ -26,16 +26,17 @@ public class AgregarPlatillo implements MenuDecorator{
     @Override
     public void Implementar(User usuario) {
         Asistente asistente = (Asistente)usuario;
+        System.out.println("A continuación ingrese los datos del platillo a ingresar...\n");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese el nombre del platillo: ");
+        System.out.print("Ingrese el nombre del platillo: ");
         String nombre = sc.nextLine();
-        System.out.println("Ingrese la descripcion del platillo: ");
+        System.out.print("Ingrese la descripcion del platillo: ");
         String descripcion = sc.nextLine();
-        System.out.println("Ingrese la categoria del platillo(ejecutivo, estudiantil): ");
+        System.out.print("Ingrese la categoria del platillo(ejecutivo, estudiantil): ");
         String categoria = sc.nextLine();
-        System.out.println("Ingrese la temperatura del platillo(frio, caliente, al ambiente): ");
+        System.out.print("Ingrese la temperatura del platillo(frio, caliente, al ambiente): ");
         String temperatura = sc.nextLine();
-        System.out.println("Ingrese el tipo del platillo(aperitivo, plato fuerte, postre, desayuno): ");
+        System.out.print("Ingrese el tipo del platillo(aperitivo, plato fuerte, postre, desayuno): ");
         String tipo = sc.nextLine();
         try {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("Platillos.csv"), true), "UTF8"));

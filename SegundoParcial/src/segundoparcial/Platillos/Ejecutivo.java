@@ -5,7 +5,6 @@
  */
 package segundoparcial.Platillos;
 
-import segundoparcial.Platillos.Platillo;
 import segundoparcial.Extras.IExtras;
 import java.util.LinkedList;
 import segundoparcial.Restaurante;

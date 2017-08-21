@@ -11,6 +11,7 @@ import java.util.Scanner;
 import segundoparcial.Menus.*;
 import segundoparcial.Platillos.*;
 import segundoparcial.*;
+import segundoparcial.CargarSistema.Loader;
 
 /**
  *
@@ -76,52 +77,14 @@ public abstract class User {
             {
                 System.out.println((i+1)+") "+this.menus.get(i).getNombre());
             }
-            System.out.println("Escoja una opcion: \n");
+            System.out.print("Escoja una opcion: ");
             opc=sc.nextLine();
             this.menus.get(Integer.parseInt(opc)-1).Implementar(this);
+            System.out.println("\n");
         }while(Integer.parseInt(opc)>0 || Integer.parseInt(opc)<=this.menus.size());
     }
     
-    public static LinkedList<Platillo> cargarPlatillos(LinkedList<String> p, LinkedList<Restaurante> r) {
-        LinkedList<Platillo> platillos = new LinkedList<>();
-        for (int i = 0; i < p.size(); i+=6) {
-            int res = 0;
-            for (int j = 0; j < r.size(); j++) {
-                if (r.get(j).getNombre().equals(p.get(i+5))) {
-                    res = j;
-                    
-                    break;
-                }
-            }
-            Platillo platillo = null;
-            switch(p.get(i+2)) {
-                case "ejecutivo":
-                    platillo = new Ejecutivo(p.get(i), p.get(i+1), p.get(i+2), p.get(i+3), p.get(i+4), r.get(res));
-                    break;
-                case "estudiantil":
-                    platillo = new Estudiantil(p.get(i), p.get(i+1), p.get(i+2), p.get(i+3), p.get(i+4), r.get(res));
-                    break;
-            }
-            if (platillo != null) {
-                r.get(res).agregarPlatillo(platillo);
-                platillos.add(platillo);
-            }      
-        }
-        return platillos;
-    }
-    
-    public static LinkedList<Restaurante> cargarRestaurantes(LinkedList<String> r) {
-        LinkedList<Restaurante> restaurantes = new LinkedList<>();
-        for (int i = 0; i < r.size(); i+=6) {
-            Restaurante res = new Restaurante(r.get(i), r.get(i+1), r.get(i+2), r.get(i+3));
-            String[] asistentes = r.get(i+4).split(" ");
-            for (String nombre : asistentes) {
-                res.agregarAsistente(nombre);
-            }
-            restaurantes.add(res);
-        }
-        return restaurantes;
-    }
+   
     
     public void cargarTodo() {
         LinkedList<String> restaurantesString = new LinkedList<>();
@@ -134,8 +97,8 @@ public abstract class User {
         } catch (Exception ex) {
             System.out.println("No se encuentra el archivo");
         }
-        this.restaurantes = cargarRestaurantes(restaurantesString);
-        this.platillos = cargarPlatillos(platillosString, restaurantes);
+        this.restaurantes = new Loader().cargarRestaurantes(restaurantesString);
+        this.platillos = new Loader().cargarPlatillosEjecutivos(platillosString, restaurantes);
     }
     
     public static int mostrarPlatillo(HashMap<String, LinkedList<Platillo>> cat, String categoria) {
@@ -151,6 +114,7 @@ public abstract class User {
         int op = 0;
         while (op == 0) {
             try {
+                System.out.print("Escoja un platillo: ");
                 op = sc.nextInt();
             } catch  (Exception e) {
                 System.out.println("Error no debe ingresar letras");

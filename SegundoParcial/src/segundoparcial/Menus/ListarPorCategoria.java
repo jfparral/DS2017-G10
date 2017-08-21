@@ -26,7 +26,7 @@ public class ListarPorCategoria implements MenuDecorator{
     public void Implementar(User usuario) {
         usuario.cargarTodo();
         LinkedList<String> categorias = listarCategoria(usuario.getPlatillos());
-        System.out.println("Escoja una categoria");
+        
         for (int i = 0; i < categorias.size(); i++) {
             System.out.println(i+1 + ") " + categorias.get(i));
         }
@@ -34,6 +34,7 @@ public class ListarPorCategoria implements MenuDecorator{
         int opcion = 0;
         while (opcion == 0) {
             try {
+                System.out.print("Escoja una categoria: ");
                 opcion = sc.nextInt();
             } catch  (Exception e) {
                 System.out.println("Error no debe ingresar letras");
