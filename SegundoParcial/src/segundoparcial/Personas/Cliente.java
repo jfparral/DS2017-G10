@@ -24,6 +24,8 @@ public class Cliente extends User{
         this.menus.add(new ListarPorCategoria());
         this.menus.add(new PedidosdeAlmuerzo());
         this.menus.add(new Salir());
+        this.AgregarCarnet();
+        this.AgregarTarjeta();
     }
 
     public CreditCard getTarjeta() {
@@ -44,12 +46,12 @@ public class Cliente extends User{
     
     public void AgregarCarnet()
     {
-        this.carnet=new Carnet(this,5000);
+        this.carnet=new Carnet(this,50);
     }
     
     public void AgregarTarjeta()
     {
-        this.tarjeta=new CreditCard(this,5000);
+        this.tarjeta=new CreditCard(this,50);
     }
 
 }

@@ -63,12 +63,22 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
         Ejecutivo ejecutivo = (Ejecutivo) platillo;
         System.out.println("Desea agregar un postre: \n"
                 + "1) Si\n 2) No");
-        int postre = sc.nextInt();
-        sc.nextLine();
+        int postre = 0;
+        try {
+            postre = sc.nextInt();
+            sc.nextLine();
+        } catch(Exception e) {            
+        }
+                
+        
         System.out.println("Desea agregar un jugo: \n"
                 + "1) Si\n 2) No");
-        int jugo = sc.nextInt();
-        sc.nextLine();
+        int jugo = 0;
+        try {
+            jugo = sc.nextInt();
+            sc.nextLine();
+        } catch(Exception e) {            
+        }
         if (postre == 1) {
             Postre pos = new Postre("postre");
             ejecutivo.AgregarExtras(pos);

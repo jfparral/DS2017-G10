@@ -25,6 +25,10 @@ public class Carnet extends Pago{
     @Override
     public void RealizarPago(double costo) {
         System.out.println("Su saldo es: " + getSaldo());
+        if (costo > getSaldo()) {
+            System.out.println("Saldo insuficiente para realizar la compra");
+            return;
+        }        
         setSaldo(getSaldo()-costo);
         System.out.println("Se realizo el pago correctamente, su nuevo saldo es: " + getSaldo());
     }
