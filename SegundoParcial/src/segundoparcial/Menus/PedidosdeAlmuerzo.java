@@ -5,6 +5,7 @@
  */
 package segundoparcial.Menus;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -67,7 +68,9 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
         try {
             postre = sc.nextInt();
             sc.nextLine();
-        } catch(Exception e) {            
+        } catch(Exception e) {
+            System.out.println("No debe ingresar letras");
+            sc.nextLine();
         }
                 
         
@@ -77,7 +80,9 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
         try {
             jugo = sc.nextInt();
             sc.nextLine();
-        } catch(Exception e) {            
+        } catch(Exception e) {
+            System.out.println("No debe ingresar letras");
+            sc.nextLine();
         }
         if (postre == 1) {
             Postre pos = new Postre("postre");
@@ -89,6 +94,8 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
             ejecutivo.AgregarExtras(jug);
             ejecutivo.setPrecio(ejecutivo.getPrecio()+jug.getPrecio());
         }
+        String hora = hora();
+        System.out.println("La hora de retiro se fijo de " + hora);
         System.out.println("Se realizo la compra el precio es " + platillo.getPrecio() +"\nMuchas gracias");
         while (pago((Cliente)usuario,platillo.getPrecio()) == 0);
     }
@@ -114,8 +121,17 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
         System.out.println("Seleccione el metodo de pago:");
         System.out.println("1) Tarjeta de credito\n"
                 + "2) Carnet");
-        int opcion = sc.nextInt();
-        sc.nextLine();
+        int opcion = 0;
+        while (opcion == 0) {
+            try {
+                opcion = sc.nextInt();
+                sc.nextLine();
+            } catch(Exception e) {
+                System.out.println("No debe ingresar letras");
+                sc.nextLine();
+            }
+        }
+        
         Pago pago = new Carnet(usuario,0);
         switch(opcion) {
             case 1:
@@ -135,6 +151,25 @@ public class PedidosdeAlmuerzo implements MenuDecorator{
         }        
         pago.RealizarPago(precio);
         return 1;
+    }
+
+    private String hora() {
+        Scanner sc = new Scanner(System.in);
+        String[] horas = {"11h00 a 11h30","11h30 a 12h00","12h00 a 12h30","12h30 a 13h00","13h00 a 13h30","13h30 a 14h00","14h00 a 14h30","14h30 a 15h00"};
+        System.out.println("Elija la hora a la que desea retirar el pedido:");
+        for (int i = 0; i < horas.length; i++) {
+            System.out.println(i+1 + ") " + horas[i]);
+        }
+        int opcion = 0;
+        while (opcion <= 0 || opcion > horas.length) {
+            try {
+                opcion = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("No debe ingresar letras");
+                sc.next();
+            }
+        }
+        return horas[opcion - 1];
     }
     
 }
