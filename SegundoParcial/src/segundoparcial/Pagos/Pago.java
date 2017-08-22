@@ -13,7 +13,6 @@ import segundoparcial.Personas.User;
  */
 public abstract class Pago {
     private User estudiante;
-    private double precio;
     private double saldo;
 
     public Pago(User estudiante, double saldo) {
@@ -27,14 +26,6 @@ public abstract class Pago {
 
     public void setEstudiante(User estudiante) {
         this.estudiante = estudiante;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
     }
 
     public double getSaldo() {
