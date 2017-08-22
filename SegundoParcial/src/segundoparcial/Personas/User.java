@@ -27,6 +27,8 @@ public abstract class User {
     public User(String usuario, String contrasena) {
         this.usuario = usuario;
         this.contrasena = contrasena;
+        restaurantes = new LinkedList<>();
+        platillos = new LinkedList<>();
     }
 
     public String getUsuario() {
