@@ -51,9 +51,7 @@ public class ListarPorCategoriaTest {
         System.out.println("Implementar");
         User usuario = new Cliente("cliente1","contrasena");
         ListarPorCategoria instance = new ListarPorCategoria();
-        instance.Implementar(usuario);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        //instance.Implementar(usuario);
     }
 
     /**
