@@ -43,17 +43,17 @@ public class LoaderTest {
     /**
      * Test of Login method, of class Loader.
      */
-    @Test
-    public void testLogin() throws IOException {
-        System.out.println("Login");
-        LinkedList<User> lista = Loader.cargarUsuarios(new Lector("UsuariosTest.csv").cargarArchivo());
-        User expResult = new Cliente("cliente1","contrasena");
-        User result = Loader.Login(lista);
-        //assertEquals(null, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-        //NO se ejecuta ya que pide datos por entrada de teclado
-    }
+//    @Test
+//    public void testLogin() throws IOException {
+//        System.out.println("Login");
+//        LinkedList<User> lista = Loader.cargarUsuarios(new Lector("UsuariosTest.csv").cargarArchivo());
+//        User expResult = new Cliente("cliente1","contrasena");
+//        User result = Loader.Login(lista);
+//        //assertEquals(null, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        //fail("The test case is a prototype.");
+//        //NO se ejecuta ya que pide datos por entrada de teclado
+//    }
 
     /**
      * Test of cargarPlatillosEjecutivos method, of class Loader.
